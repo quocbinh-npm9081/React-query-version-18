@@ -9,11 +9,18 @@ const Home = () => {
  const queryClient = useQueryClient();
 
  const fetchAllCharacter = async () => {   
+  console.log("call api")
   const response = await getCharacter();
   return response.data.results;
  }  
 
-  const {isError, isSuccess, isLoading, data } = useQuery(['characters'],fetchAllCharacter, {staleTime: 60000} )
+  const {isError, isSuccess, isLoading, data } = useQuery(['characters', 1],fetchAllCharacter, {
+    staleTime: 60000, // thoi gian data duoc tinh la` new
+    cacheTime:Infinity, // thoi gian data ton tai trong cache, het thoi gian thi data = undefine
+    retry: 1, // khi api ko goi dc, thi` no sex co gang gi them 1 lan nua
+    retryDelay: 1000,// thoi gian goi lai
+    refetchOnWindowFocus: false
+  } )
 
     useEffect(() => {
 
