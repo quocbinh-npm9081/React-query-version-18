@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
-import axios from '../api/index';
-import { useQueryClient, useQuery } from 'react-query';
+import { useQueryClient, useQuery } from '@tanstack/react-query';
 import Card from '../components/Card';
 import { getCharacter } from '../api/apiCharacter';
+
 const Home = () => {
  const [characters, setSharacters] = useState<any>([]);
  const [error, setError] = useState<any>();
@@ -11,26 +11,23 @@ const Home = () => {
  const fetchAllCharacter = async () => {   
   const response = await getCharacter();
   return response.data.results;
- }
-
- 
-  
+ }  
 
   const {isError, isSuccess, isLoading, data } = useQuery(['characters'],fetchAllCharacter, {staleTime: 60000} )
 
     useEffect(() => {
 
-    console.log("mounted")
-        
-    }, [])
+  console.log("mounted")
+      
+  }, [])
 
-    if (isLoading) {
-        return <span>Loading...</span>
-    }
+  if (isLoading) {
+      return <span>Loading...</span>
+  }
 
-    if (isError) {
-        return <span>Error: {error.message}</span>
-    }
+  if (isError) {
+      return <span>Error: {error.message}</span>
+  }
     
  
   return (
@@ -42,11 +39,8 @@ const Home = () => {
                     data.map((character:any)=> <div key={character.id}> 
                         <Card character={character}/>
                     </div>)
-                }
-    
-                </div>
-            
-          
+                }    
+              </div>          
         </div>
         {isLoading ?? "LOADING ...."}
     </section>
