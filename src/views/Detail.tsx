@@ -8,8 +8,7 @@ const Detail = () => {
 
   const fetchApi = async (id:any) =>{
     const respone = await getDetailCharacter(id)
-    return respone.data;
-    
+    return respone.data;    
   }
 
   const {isLoading, isError , data} = useQuery(["detailCharacter"] ,()=>fetchApi(id), {
@@ -17,7 +16,8 @@ const Detail = () => {
     retryDelay:500,
     cacheTime: 10000,
     staleTime:6000,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    enabled: id? true : false //<-- day la Dependent  // khi nao co id thi moi call api  
   })
 
   return (
