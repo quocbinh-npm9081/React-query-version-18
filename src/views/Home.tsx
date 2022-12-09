@@ -5,7 +5,6 @@ import { getCharacter } from '../api/apiCharacter';
 import { getEpisode } from '../api/apiEpisode';
 
 const Home = () => {
- const [characters, setSharacters] = useState<any>([]);
  const [error, setError] = useState<any>();
  const queryClient = useQueryClient();
 
@@ -29,10 +28,10 @@ const Home = () => {
  } 
 
  //call nhieu api cung 1 luc
-  const results = useQueries({queries: [
-    {queryKey : ['characters', 1],queryFn:  fetchAllCharacter , ...optionQueries},
-    {queryKey : ['episodies', 1], queryFn: fetchAllEpisode , ...optionQueries},
-  ]});
+  // const results = useQueries({queries: [
+  //   {queryKey : ['characters', 1],queryFn:  fetchAllCharacter , ...optionQueries},
+  //   {queryKey : ['episodies', 1], queryFn: fetchAllEpisode , ...optionQueries},
+  // ]});
  
 
 
