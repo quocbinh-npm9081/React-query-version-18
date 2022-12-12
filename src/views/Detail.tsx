@@ -18,7 +18,7 @@ const Detail = () => {
     cacheTime: 10000,
     staleTime:6000,
     refetchOnWindowFocus: false,
-   enabled: id? true : false //<-- day la Dependent  // khi nao co id thi moi call api  
+    enabled: id? true : false //<-- day la Dependent  // khi nao co id thi moi call api  
   })
 
   console.log("isLoading: ", isLoading);

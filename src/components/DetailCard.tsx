@@ -1,6 +1,15 @@
 import React from 'react'
+import { useQueryClient, useIsFetching } from '@tanstack/react-query';
 
 const DetailCard: React.FC<any> = ({data}) => {
+    const queryClient = useQueryClient();
+    const listenFetching = useIsFetching(["characters", 1]); // lang nghe trang thai fetching 
+    console.log("get globel value queryClient so it: ", queryClient.getQueryData(["characters", 1] )); // het thoi gian caheTime thi gia tri se la undefined
+    console.log("get globel value queryClient so nhieu: ", queryClient.getQueriesData(["characters", 1] )); // het thoi gian caheTime thi gia tri se la undefined
+    console.log("=============================="); // het thoi gian caheTime thi gia tri se la undefined
+    console.log("status: ",listenFetching); // het thoi gian caheTime thi gia tri se la undefined return 0 isn't fetching
+
+
   return (
     <>
     {
